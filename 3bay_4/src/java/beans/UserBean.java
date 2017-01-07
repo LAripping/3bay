@@ -269,7 +269,8 @@ public class UserBean {
         else if(username.equals("Admin"))
             return "/template/amenu.xhtml";
         else
-            return "/template/menu.xhtml";
+            // Logged in user
+            return "/template/umenu.xhtml";
     }
     
     public String guest(){

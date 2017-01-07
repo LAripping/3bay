@@ -15,5 +15,7 @@ Browse. Bid. Buy!
 -[ ] Ensure mydb.mysql sets up the whole db required when exec'ed
 -[ ] Fix OpenMap API error (`missing key`)
 -[ ] Add Login button to Guest Home (link to login screen)
--[ ] Fix page layout (banner next to logo, cooler logo?)
+-[ ] Fix page layout
+   * Banner next to logo
+   * Cooler logo (not a label'ed panel)
 
