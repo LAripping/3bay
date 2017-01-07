@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"      
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Message # #{messageView.id} </title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> 
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h:form>
+                    <p:panelGrid columns="2" style="width:670px; margin-bottom: 30px;">         
+                        <f:facet name="header">
+                            Message # #{messageView.id}
+                        </f:facet>
+
+                        <p:outputLabel for="end" value=" #{messageView.endTitle()}" style="height:400px;"/>
+                        <p:outputLabel id="end" value="#{messageView.endName().username }" style="padding-left:35px" />
+
+                        <p:outputLabel for="content" value="Content:" />
+                        <p:scrollPanel id="content" style="height:128px; background-color:white;">
+                            #{messageView.text}"
+                        </p:scrollPanel>
+
+                        <f:facet name="footer"> 
+                            Sent: #{messageView.timeSent}
+                        </f:facet>
+                    </p:panelGrid>
+
+                    <p:commandButton value="#{messageView.endLink()}" icon="ui-icon-person" iconPos="left"
+                                     style="position: relative; left: 25px;"
+                                     action="#{profile.makeProfile( messageView.endName().username )}" />
+                    <p:commandButton value="Mark Unread" icon="ui-icon-mail-closed" iconPos="right"
+                                     style="position: relative; left:350px;" disabled="#{! messageView.isRecipientViews()}"
+                                     action="#{message.markUnread(messageView.id)}"/>
+                    <p:commandButton value="#{messageView.deleteValue()}" icon="ui-icon-trash" iconPos="right"
+                                     style="position: relative; right:20px;" ajax="true"
+                                     action="#{message.hide(messageView.id, messageView.recipientViews)}" disabled="#{messageView.isHidden()}"  />
+
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>

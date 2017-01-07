@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Login</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="content">
+                <h:form style="margin-left:200px">
+                    <p:messages for="userName" autoUpdate="true" showIcon="false" closable="true"/>
+                    <p:messages for="password" autoUpdate="true" showIcon="false" closable="true"/>
+                    
+                    <p:panelGrid columns="2" >
+                        <f:facet name="header">
+                            Please Login
+                        </f:facet>                    
+                        Username: <h:inputText id="userName" value="#{user.username}" required="true" requiredMessage="Please enter your username"/>
+                        
+                        Password: <h:inputSecret id="password" value="#{user.passwords}" required="true" requiredMessage="Please enter your password"/>
+                        
+                    </p:panelGrid>
+
+                    <p:commandButton value="login" action="#{user.login}" style="margin-left: 105px; margin-top: 5px; width: 90px; padding-left: 6px;"/>
+                </h:form>
+
+                <br/><br/><br/>
+
+                <h:form id="options">
+                    <p:commandButton value="register" action="#{user.register}" />
+                    <p:commandButton value="guest" action="#{user.guest()}" style="width: 92px;" />
+                </h:form>
+                
+                
+
+            </div>    
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div> 
+    </h:body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>All Auctions</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h1 class="welcome">  Welcome #{user.username}! </h1> 
+                <h:form>
+                    <p:dataGrid value="#{items.makeList(user.username)}" var="itm" style="width:700px" rows="6" paginator="true" columns="2" rowsPerPageTemplate="6,10,40">
+                        <f:facet name="header">
+                            #{items.name()}
+                        </f:facet>
+                        <ui:include src="/restricted/tab.xhtml" />
+                    </p:dataGrid>
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+        
+    </h:body>
+</html>

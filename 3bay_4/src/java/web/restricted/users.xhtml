@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>User List</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h:form style="width:742px;">
+                    <p:dataTable value="#{users.userList}" var="usr" >
+                        <f:facet name="header">
+                            User List
+                        </f:facet>
+
+                        <p:column headerText="Username" sortBy="#{usr.username}">
+                            <h:outputText value="#{usr.username}" />
+                        </p:column>
+
+                        <p:column headerText="Social Security Number" sortBy="#{usr.socialSecurityNumber}">
+                            <h:outputText value="#{usr.socialSecurityNumber}" />
+                        </p:column>
+
+                        <p:column headerText="First Name" sortBy="#{usr.firstName}">
+                            <h:outputText value="#{usr.firstName}" />
+                        </p:column>
+
+                        <p:column headerText="Last Name" sortBy="#{usr.lastName}">
+                            <h:outputText value="#{usr.lastName}" />
+                        </p:column>
+
+                        <p:column headerText="Approved" sortBy="#{usr.isConfirmed}" style="width:70px">
+                            <h:outputText value="#{usr.isConfirmed}"/>
+                        </p:column>
+
+                        <p:column headerText="Visit Profile" style="width:70px">
+                            <p:commandButton icon="ui-icon-person" action="#{profile.makeProfile(usr.username)}" />
+                        </p:column>    
+                    </p:dataTable>
+                    <p:commandButton id="approveAll" value="Approve All" icon="ui-icon-circle-check" action="#{user.approveAll}" style="margin-top: 5px"/>
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>

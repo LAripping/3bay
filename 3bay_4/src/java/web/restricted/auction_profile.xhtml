@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:m="http://code.google.com/p/gmaps4jsf/"      
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Auction # #{auction.itemId}</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> 
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <p:galleria value="#{auction.photos}" var="image" panelWidth="700" panelHeight="350" effectSpeed="1000" style="margin-bottom:10px;"  >
+                    <img src="#{image}" width="700px" height="350px" alt="No photo" />
+                </p:galleria>
+
+                <h:form>
+                    <p:panelGrid columns="2" style="float:left; margin-left:11px; width:489px;">         
+                        <f:facet name="header">
+                            <p:row>
+                                <p:column colspan="3">Auction ID:  # #{auction.itemId}</p:column>
+                            </p:row>
+                        </f:facet>
+
+                        <p:outputLabel for="name" value="Name: "/>
+                        <p:outputLabel id="name" value="#{auction.name}"/>
+
+                        <p:outputLabel for="description" value="Description: "/>
+                        <p:scrollPanel id="description" style="width:230px; height:70px" mode="native" >
+                            #{auction.description}
+                        </p:scrollPanel>
+
+                        <p:outputLabel for="currentBid" value="Current Bid: "/>
+                        <p:outputLabel id="currentBid" value="#{auction.currentBid}"/>
+
+                        <p:outputLabel for="buyNow" value="Buyout Price: "/>
+                        <p:outputLabel id="buyNow" value="#{auction.buyNow}"/>
+
+                        <p:outputLabel for="firstBid" value="First Bid: "/>
+                        <p:outputLabel id="firstBid" value="#{auction.firstBid}"/>
+
+                        <p:outputLabel for="startTime" value="Start Time: "/>
+                        <p:outputLabel id="startTime" value="#{auction.startTime}"/>
+
+                        <p:outputLabel for="endTime" value="End Time: "/>
+                        <p:outputLabel id="endTime" value="#{auction.endTime}"/>
+
+                        <p:outputLabel for="seller" value="Seller: "/>
+                        <p:outputLabel id="seller" value="#{auction.seller.getUsername()}"/>
+
+                        <p:outputLabel for="rating" value="Seller: "/>
+                        <p:rating value="#{auction.seller.sellerRating}" readonly="true" id="rating"/>
+
+                        <p:outputLabel for="category" value="Category: "/>
+                        <p:outputLabel id="category" value="#{auction.showCategories()}"/>
+
+                    </p:panelGrid>
+
+                    <m:map width="200px"  height="200px" zoom="8" address="#{auction.getAddress()}" >
+                        <m:marker />
+                        <m:htmlInformationWindow htmlText="#{auction.getAddress()}"/>
+                    </m:map>
+
+                    <p:commandButton icon="ui-icon-arrowthick-1-w" action="#{auction.goBack()}" immediate="true" style="margin:4px;"/>
+                    <p:commandButton value="Bid" onclick="PF('bid').show();" disabled="#{auction.isBidable(user.username)}" ajax="true" style="margin-right:8px; margin-top:3px; float:right; width:130px"/>
+                    <br/>
+                    <p:commandButton value="Buy" onclick="PF('buyCertain').show();" disabled="#{auction.isBuyable(user.username)}" ajax="true" style="margin-right:8px; float:right; width:130px"/>
+                    <br/>
+                    <p:commandButton value="Export" icon="ui-icon-bookmark" action="#{auction.export()}" rendered="#{!user.isAdmin()}" ajax="true" style="margin-right:8px; margin-top:5px; float:right; width:130px"/>
+                </h:form>
+
+                <p:dialog header="Place your bid" widgetVar="bid" modal="true" height="70">
+                    <h:form>
+                        <h:outputText value="Value" style="margin-right:10px"/>
+                        <h:inputText required="true" requiredMessage="Please specify your bid's value" value="#{auction.tempBid}"/>
+                        <br/>
+                        <p:commandButton onclick="PF('bidCertain').show();" value="Bid it!" style="margin-top:5px"/>
+                    </h:form>
+                </p:dialog> 
+
+                <p:dialog header="Are you certain about your bid?" widgetVar="bidCertain" modal="true" height="70">
+                    <h:form>
+                        <p:commandButton action="#{auction.bid(user.username)}" value="Yes" />
+                        <p:commandButton action="/restricted/auction_profile?faces-redirect=true" value="No" />
+                    </h:form>
+                </p:dialog> 
+
+                <p:dialog header="Are you certain about your buying?" widgetVar="buyCertain" modal="true" height="70">
+                    <h:form>
+                        <p:commandButton action="#{auction.buy(user.username)}" value="Yes" />
+                        <p:commandButton action="/restricted/auction_profile?faces-redirect=true" value="No" />
+                    </h:form>
+                </p:dialog> 
+
+                <br/> <br/>
+                <p:outputLabel value="#{auction.bidResult}" style="clear: both; position: relative; left: 9px; color: blue;" />
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>

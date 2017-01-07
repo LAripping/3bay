@@ -1,0 +1,55 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+
+    <p:panelGrid class="tab" >
+        <f:facet name="header">
+            <p:row>
+                <p:column colspan="3">Auction ID:  # #{itm.itemId}</p:column>
+            </p:row>
+        </f:facet>
+
+        <p:row>
+            <p:column rowspan="5">
+                <img src="#{itm.photo()}" height="100px" width="100px" alt="No photo"/>
+            </p:column>
+            <p:column>Name:</p:column>
+            <p:column>#{itm.name}</p:column>
+        </p:row>
+
+        <p:row>
+            <p:column>Bid:</p:column>
+            <p:column>#{itm.bid()}</p:column>
+        </p:row>
+
+        <p:row>
+            <p:column>Buyout:</p:column>
+            <p:column> #{itm.buyNow} </p:column>
+        </p:row>
+
+        <p:row>
+            <p:column>End Time:</p:column>
+            <p:column>#{itm.time()}</p:column>
+        </p:row>
+
+        <p:row>
+            <p:column>Status:</p:column>
+            <p:column style="#{itm.colour(items.choice,user.username)}" >#{itm.status(items.choice,user.username)} </p:column>
+        </p:row>
+        
+        <p:row>
+            <p:column>
+                <p:commandButton value="Go" action="#{auction.makeAuction(itm.itemId, items.factor())}"/>
+            </p:column>
+            <p:column>Category</p:column>
+            <p:column>#{itm.categories[0]} ...</p:column>
+        </p:row>
+
+    </p:panelGrid>
+
+</ui:composition>
+

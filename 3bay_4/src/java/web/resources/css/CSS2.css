@@ -1,0 +1,90 @@
+       
+// Basic layout rules (per div) 
+
+
+a:focus { text-decoration:none; }
+
+body {
+    background-image: url("#{resource['css/gradient.PNG']}");
+    background-repeat: repeat-x;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0 auto 0 auto;
+    text-align:left;
+}
+
+
+#container {
+    display: block; 
+    height:auto;
+    position: relative; 
+    width: 960px;
+}
+
+
+#header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#sidemenu {
+    float: left;
+    height: 525px;
+    width: 206px;
+    margin-bottom: 25px;
+}
+
+#content {
+    margin-left: 5px;
+    margin-bottom: 145px;
+    float: left;
+    padding: 5px;
+    width: 720px;
+} 
+
+#footer {
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+// Special rules (per class)
+
+.tab { 
+    margin-top:20px;
+    margin-bottom: 20px;
+    width:350px;
+}       
+
+.logo {
+    float: left;
+}
+
+.banner {
+    margin-left: 5px;
+    height: 137px;
+    width: 747px
+}
+
+h1.welcome {
+    font-size: 45px;
+    font-family:cursive;
+    text-align: center;
+    color: rgb(71, 222, 210);
+    text-shadow: 4px 0 rgba(231, 0, 255, 0.2);
+}
+
+#options{ 
+    position: relative;
+    width: 222px;
+    bottom: 97px;
+    left: 172px;
+}

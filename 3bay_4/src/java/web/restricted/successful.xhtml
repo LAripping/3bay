@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Success!</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="content" style="position:relative; left:135px">
+                <h1 class="welcome">Register successful! <br/> Your approval is pending. </h1>
+               
+                <h:form style="width:200px; position:relative; top:60px">
+                    <p:commandButton id="succGoBack" value="Go to Home" action="#{user.logout()}"/>
+                </h:form>
+            </div>
+
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>   
+
+    </h:body>
+</html>
+
+

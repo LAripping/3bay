@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Register</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="content">
+                <h:form>
+                    <p:growl autoUpdate="true"/>
+                    
+                    <p:panelGrid id="registerForm" columns="2" style="position: relative; width: 550px; left: 200px;" >
+                        <f:facet name="header">
+                            Register
+                        </f:facet>
+                        <p:outputLabel for="username" value="Username:" />
+                        <p:inputText id="username" value="#{user.username}" required="true" requiredMessage="Please enter your username" style="width:250px"/>
+
+                        <p:outputLabel for="password" value="Password:" />
+                        <p:password id="password" value="#{user.passwords}" required="true" requiredMessage="Please enter your password" style="width:250px"/>
+
+                        <p:outputLabel for="password2" value="re-enter Password:" />
+                        <p:password id="password2" value="#{user.passwords}" required="true" requiredMessage="Please re-enter your password" style="width:250px"/>
+                        
+                        <p:outputLabel for="firstName" value="First Name: " />
+                        <p:inputText id="firstName" value="#{user.firstName}" required="true" requiredMessage="Please enter your first name" style="width:250px"/>
+                      
+                        <p:outputLabel for="lastName" value="Last Name: " />
+                        <p:inputText id="lastName" value="#{user.lastName}" required="true" requiredMessage="Please enter your last name" style="width:250px"/>
+                      
+                        <p:outputLabel for="email" value="e-mail: "/>
+                        <p:inputText id="email" value="#{user.email}" required="true" requiredMessage="Please enter your e-mail" style="width:250px"/>
+                      
+                        <p:outputLabel for="mobileNumber" value="Mobile Number: "/>
+                        <p:inputText id="mobileNumber" value="#{user.mobileNumber}" required="true" requiredMessage="Please enter your mobile number" style="width:250px"/>
+                      
+                        <p:outputLabel for="socialSecurityNumber" value="Social Security Number: "/>
+                        <p:inputText id="socialSecurityNumber" value="#{user.socialSecurityNumber}" required="true" requiredMessage="Please enter your Social Security Number" style="width:250px"/>
+                      
+                        <p:outputLabel for="city" value="City: " />
+                        <p:inputText id="city" value="#{user.city}" required="true" requiredMessage="Please enter your city" style="width:250px"/>
+                      
+                        <p:outputLabel for="street" value="Street: "/>
+                        <p:inputText id="street" value="#{user.street}" required="true" requiredMessage="Please enter your street" style="width:250px"/>
+                      
+                        <p:outputLabel for="streetNumber" value="Street Number: "/>
+                        <p:inputText id="streetNumber" value="#{user.streetNumber}" required="true" requiredMessage="Please enter your Street Number" style="width:150px"/>
+                      
+                        <p:outputLabel for="postalCode" value="Postal Code: "/>
+                        <p:inputText id="postalCode" value="#{user.postalCode}" required="true" requiredMessage="Please enter your postal dode" style="width:150px"/>
+                      
+                        <p:outputLabel for="country" value="Country: " />
+                        <p:selectOneMenu id="country" value="#{user.country}" style="width:158px">
+                            <f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                            <f:selectItems value="#{dropdownView.makeCountries()}" />
+                        </p:selectOneMenu>                 
+                    </p:panelGrid>
+                    
+                    <p:outputLabel value="* necessary field" style="position: relative; left: 300px;"/>
+                    <p:commandButton value="Register" action="#{user.insertUser}" icon="ui-icon-check" style="position: relative; left: 494px; margin-top:5px"/>
+                    <p:commandButton value="Reset" style="position: relative; left: 498px; margin-top:5px" >
+                        <p:ajax update="registerForm" resetValues="true" />
+                    </p:commandButton>
+
+
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>

@@ -1,0 +1,26 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:form  class="logo">
+        <h:commandLink style="text-decoration: none; cursor: pointer" action="/restricted/user_home?faces-redirect=true">
+            <p:panelGrid columns="1" style="cursor: pointer"> 
+                <p:column style="cursor: pointer">
+                    <p:outputLabel value="3" style="color: red;font-size: 500%;cursor: pointer"/>
+                    <p:outputLabel value="b" style="color: blue;font-size: 500%;cursor: pointer"/>
+                    <p:outputLabel value="a" style="color: gold;font-size: 500%;cursor: pointer"/>
+                    <p:outputLabel value="y" style="color: green;font-size: 500%;cursor: pointer"/>
+                </p:column>
+                <f:facet name="footer" >
+                    <p:outputLabel value="Browse.Bid.Buy" style="cursor: pointer" />
+                </f:facet>
+            </p:panelGrid>
+        </h:commandLink>
+    </h:form>
+    
+    <h:graphicImage value="/template/bags-cut.jpg" class="banner" />
+
+</ui:composition>

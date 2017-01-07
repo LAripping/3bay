@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Sent Messages</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h:form>
+                    <p:dataTable id="messageList" value="#{messagesOut.makeSentList(user.username)}" var="msg"
+                                 draggableColumns="true" resizableColumns="true" rowKey="#{msg.id}"
+                                 emptyMessage="no messages to display"
+                                 scrollable="true" scrollHeight="200"
+                                 style="height:291px; margin-bottom: 200px;">
+
+                        <f:facet name="header">
+                            #{messagesOut.showHiddenTitle()}
+                        </f:facet>
+                        
+                        <p:column headerText="Status" sortBy="#{msg.isRead}" colspan="2">
+                            <h:outputText value="#{msg.isReadStatus()}" />
+                        </p:column>
+
+                        <p:column headerText="ID" sortBy="#{msg.id}" colspan="1">
+                            <h:outputText value="#{msg.id}" />
+                        </p:column>
+
+                        <p:column headerText="Recipient" sortBy="#{msg.recipient.username}" colspan="2" >
+                            <h:outputText value="#{msg.recipient.username}" />
+                        </p:column>
+
+                        <p:column headerText="Time Sent" sortBy="#{msg.timeSent}" colspan="5">
+                            <h:outputText value="#{msg.timeSent}" />
+                        </p:column>
+               
+                        <p:column headerText="View" id="viewButton" colspan="1" >
+                            <p:commandButton icon="ui-icon-search" action="#{messageView.makeView(msg.id, false)}"/>
+                        </p:column>   
+
+                    </p:dataTable>
+                    
+                    <h:outputLabel value="Previously deleted messages do not appear in your Outbox..."
+                                   style="position: relative; bottom: 150px; left: 120px; font-size: 17px; font-family: cursive;" />
+                    <p:commandButton value="#{messagesOut.showHiddenStatus()}" icon="#{messagesOut.showHiddenIcon()}" iconPos="right" 
+                                     action="#{messagesOut.makeReceivedList_refresh(usr.username)}"
+                                     style="position: relative; bottom: 150px; left: 138px;" disabled="#{messagesOut.isShowHidden()}">
+                        <f:setPropertyActionListener value="true" target="#{messagesOut.showHidden}" />
+                    </p:commandButton>
+
+                </h:form>
+
+                <div id="footer">
+                    <ui:include src="/template/footer.xhtml"/>
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>

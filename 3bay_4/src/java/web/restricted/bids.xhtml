@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Item ##{auction.itemId} | Bids</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>           
+            </div>
+
+            <div id="content">
+                <h1 class="welcome">  Welcome #{user.username}! </h1>
+                <br/>
+                <h:form style="width:700px; height:500px">
+                    <p:dataList value="#{auction.bids()}" var="bd" rows="10" paginator="true"  paginatorPosition="bottom" rowsPerPageTemplate="10,20,40" emptyMessage="Auction not yet bidded">    
+                        <f:facet name="header">
+                            Bid History
+                        </f:facet>
+
+                        <p:row>
+                            #{bd.date} : #{bd.bidder.username} bidded #{bd.bid}
+                        </p:row>
+
+                        <f:facet name="footer">
+                            #{auction.epiloge(user.username)}
+                        </f:facet>
+                    </p:dataList>
+
+
+                    <br/><br/><br/>
+                    <p:panelGrid columns="2" rendered="#{auction.canRate(user.username)}">                       
+                        <f:facet name="header">
+                            Rate your experience!
+                        </f:facet>
+                        
+                        <h:outputLabel value="#{auction.winnerORsellerTitle(user.username)}'s current #{auction.winnerORseller(user.username)}rating:" />
+                        <p:rating readonly="true" cancel="false" value="#{auction.winnerORsellerRating(user.username)}" />
+
+                        <h:outputLabel value="Give your rating:" />
+                        <p:rating value="#{auction.givenRating}">
+                            <p:ajax event="cancel" listener="#{auction.oncancel()}"/>
+                        </p:rating>
+
+                        <f:facet name="footer">
+                            <p:commandButton rendered="#{auction.canRate(user.username)}" value="Done" action="#{auction.onrate(user.username)}" style="margin:2px"/>
+                        </f:facet>
+                    </p:panelGrid>
+
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>   
+
+    </h:body>
+</html>
+
+

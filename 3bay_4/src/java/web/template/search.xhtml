@@ -1,0 +1,14 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:form >
+        <p:growl autoUpdate="true"/>
+
+        <p:inputText value="#{items.keys}" style="width:500px; "  placeholder="Search"/> 
+        <p:commandButton icon="ui-icon-search" action="#{items.keepChoice(21, items.keys)}" style="position: relative; left: 20px;"/>
+    </h:form>
+</ui:composition>
+

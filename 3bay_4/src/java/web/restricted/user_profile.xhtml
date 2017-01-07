@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"   
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:m="http://code.google.com/p/gmaps4jsf/" 
+
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>#{profile.username} | Profile</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script> 
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h:form>
+                    <p:panelGrid columns="2" style="float:left">
+                        <f:facet name="header">
+                            User Profile
+                        </f:facet>
+                        Username: <h:outputText id="userName" value="#{profile.username}" />
+                        Password: <h:outputText id="password" value="#{profile.passwords}" /> 
+                        First Name: <h:outputText id="firstName" value="#{profile.firstName}" /> 
+                        Last Name: <h:outputText id="lastName" value="#{profile.lastName}" /> 
+                        e-mail: <h:outputText id="email" value="#{profile.email}" /> 
+                        Mobile Number: <h:outputText id="mobileNumber" value="#{profile.mobileNumber}" /> 
+                        Street: <h:outputText id="street" value="#{profile.street}" /> 
+                        Street Number: <h:outputText id="streetNumber" value="#{profile.streetNumber}" />       
+                        Social Security Number: <h:outputText id="socialSecurityNumber" value="#{profile.socialSecurityNumber}" /> 
+                        Postal Code: <h:outputText id="postalCode" value="#{profile.postalCode}" />  
+                        City: <h:outputText id="city" value="#{profile.city}"/>
+                        Country: <h:outputText id="country" value="#{profile.country}"/>
+                        Buyer: <p:rating value="#{profile.buyerRating}" readonly="true" />
+                        Seller: <p:rating value="#{profile.sellerRating}" readonly="true" />
+                    </p:panelGrid>
+
+                    <m:map width="200px"  height="200px" zoom="8" address="#{profile.getAddress()}" style="float:left; margin:5px; border-style:solid">
+                        <m:marker />
+                        <m:htmlInformationWindow htmlText="#{profile.getAddress()}"/>
+                    </m:map>
+
+                    <p:commandButton icon="ui-icon-arrowthick-1-w" action="#{profile.goBack(user.username)}" immediate="true" style="margin:5px 5px 0 87px "/>
+                    <p:commandButton value="#{profile.checkConfirm()}" icon="#{profile.iconConfirm()}" action="#{profile.approve()}" disabled="#{profile.isConfirmed}" ajax="true"/>
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>
+

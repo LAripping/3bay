@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Create Auction</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true">
+        </script> 
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h:form enctype="multipart/form-data">
+                    
+                    <p:growl autoUpdate="true"/>
+                    
+                    <p:panelGrid id="createAuction" columns="2">
+                        <f:facet name="header">
+                            Create Auction
+                        </f:facet>
+
+                        <p:outputLabel for="name" value="Name:" />
+                        <p:inputText id="name" value="#{item.name}" required="true" requiredMessage="Please enter auction name!" />
+
+                        <p:outputLabel for="description" value="Description:"/>
+                        <p:inputTextarea cols="30" value="#{item.description}" id="description"/>
+
+                        <p:outputLabel for="buyNow" value="Buyout Price:"/>
+                        <p:inputText id="buyNow" value="#{item.buyNow}"/>
+
+                        <p:outputLabel for="firstBid" value="First Bid:"/>
+                        <p:inputText id="firstBid" value="#{item.firstBid}" required="true" requiredMessage="Please define starting bid!"/>
+
+                        <p:outputLabel for="endTime" value="End Time:"/>
+                        <p:calendar id="endTime" value="#{item.endTime}"/>
+
+                        <p:outputLabel value="Photo: (Less than 2MB)"/>
+                        <p:fileUpload fileUploadListener="#{item.handleFileUpload}"  sizeLimit="2000000"/>
+
+                        <p:outputLabel value="*necessary field" style="widht:80px; padding-left:30px;"/>
+
+                        <p:selectCheckboxMenu id="menu" value="#{item.categories}" label="Categories"
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                            <f:selectItems value="#{categories.categories}" />
+                        </p:selectCheckboxMenu>
+                    </p:panelGrid>
+
+                    <p:commandButton value="create" action="#{item.insertItem(user.username)}" icon="ui-icon-plusthick" style="margin-left: 64px; margin-top: 10px;"/>
+
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>

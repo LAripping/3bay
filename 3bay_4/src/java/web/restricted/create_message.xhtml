@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Create Message</title>
+        <h:outputStylesheet name="CSS2.css" library="css"/>
+        <link rel="shortcut icon" type="image/x-icon" href="#{resource['css/favicon.png']}"/>
+    </h:head>
+    <h:body>
+        <div id="container">
+            <div id="header">
+                <ui:include src="/template/logo.xhtml"/>
+            </div>
+
+            <div id="sidemenu">
+                <ui:include src="#{user.menu()}"/>
+            </div>
+
+            <div id="content">
+                <h:form>
+                    <p:outputLabel for="recipient" value="Send to:" style="position: relative; left: 60px;"/>                    
+                    <p:inputText id="recipient" value="#{message.recipientUsername}" placeholder="recipient's username"
+                                 required="true" requiredMessage="Please specify recipient!" style="position: relative; left: 64px;"/>
+                    
+                    
+                    <p:editor id="editor" widgetVar="editorWidget" value="#{message.text}" width="600" 
+                              required="true" requiredMessage="Message is empty!" style="margin-top:20px" />
+
+                    <h:panelGrid columns="2" style="margin-top: 10px">
+                        <p:commandButton value="Send" action="#{message.sendMessage(user.username)}" icon="ui-icon-arrowreturnthick-1-e" />
+                        <p:commandButton value="Clear" type="button" onclick="PF('editorWidget').clear();" icon="ui-icon-close" />
+                    </h:panelGrid>
+
+                </h:form>
+            </div>
+
+            <div id="footer">
+                <ui:include src="/template/footer.xhtml"/>
+            </div>
+        </div>
+
+    </h:body>
+</html>

@@ -1,0 +1,68 @@
+<ui:composition 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+    <h:form>
+        <p:growl autoUpdate="true"/>
+
+        <p:panelMenu>
+            <p:submenu label="Browse Auctions">
+                <p:menuitem value="All" action="#{items.keepChoice(11,'')}"/>
+                <p:submenu label="By Categories" >
+                    <p:menuitem value="Antiques" action="#{items.keepChoice(12,'Antiques')}"/>
+                    <p:menuitem value="Art" action="#{items.keepChoice(12, 'Art')}"/>
+                    <p:menuitem value="Baby" action="#{items.keepChoice(12, 'Baby')}"/>
+                    <p:menuitem value="Books" action="#{items.keepChoice(12, 'Books')}"/>
+                    <p:menuitem value="Business &amp; Industrial" action="#{items.keepChoice(12, 'Business &amp; Industrial')}"/>
+                    <p:menuitem value="Cameras &amp; Photo" action="#{items.keepChoice(12, 'Cameras &amp; Photo')}"/>
+                    <p:menuitem value="Cell phones &amp; Accessories" action="#{items.keepChoice(12, 'Cell phones &amp; Accessories')}"/>
+                    <p:menuitem value="Clothing, Shoes &amp; Accessories" action="#{items.keepChoice(12, 'Clothing, Shoes &amp; Accessories')}"/>
+                    <p:menuitem value="Coins &amp; Paper Money" action="#{items.keepChoice(12, 'Coins &amp; Paper Money')}"/>
+                    <p:menuitem value="Collectibles" action="#{items.keepChoice(12, 'Collectibles')}"/>
+                    <p:menuitem value="Computers/Tablets &amp; Networing" action="#{items.keepChoice(12, 'Computers/Tablets &amp; Networing')}"/>
+                    <p:menuitem value="Consumer Electronics" action="#{items.keepChoice(12, 'Consumer Electronics')}"/>
+                    <p:menuitem value="Crafts" action="#{items.keepChoice(12, 'Crafts')}"/>
+                    <p:menuitem value="Dolls &amp; Bears" action="#{items.keepChoice(12, 'Dolls &amp; Bears')}"/>
+                    <p:menuitem value="DVDs &amp; Movies" action="#{items.keepChoice(12, 'DVDs &amp; Movies')}"/>
+                    <p:menuitem value="Entertainment Memorabilia" action="#{items.keepChoice(12, 'Entertainment Memorabilia')}"/>
+                    <p:menuitem value="Gift Cards &amp; Coupons" action="#{items.keepChoice(12,'Gift Cards &amp; Coupons')}"/>
+                    <p:menuitem value="Health &amp; Beauty" action="#{items.keepChoice(12, 'Health &amp; Beauty')}"/>
+                    <p:menuitem value="Home &amp; Garden" action="#{items.keepChoice(12, 'Home &amp; Garden')}"/>
+                    <p:menuitem value="Jewelry &amp; Watches" action="#{items.keepChoice(12, 'Jewelry &amp; Watches')}"/>
+                    <p:menuitem value="Motors" action="#{items.keepChoice(12, 'Motors')}"/>
+                    <p:menuitem value="Music" action="#{items.keepChoice(12, 'Music')}"/>
+                    <p:menuitem value="Musical Instruments &amp; Gear" action="#{items.keepChoice(12, 'Musical Instruments &amp; Gear')}"/>
+                    <p:menuitem value="Pet Supplies" action="#{items.keepChoice(12, 'Pet Supplies')}"/>
+                    <p:menuitem value="Pottery &amp; Glass" action="#{items.keepChoice(12, 'Pottery &amp; Glass')}"/>
+                    <p:menuitem value="Real Estate" action="#{items.keepChoice(12, 'Real Estate')}"/>
+                    <p:menuitem value="Specialty Services" action="#{items.keepChoice(12, 'Specialty Services')}"/>
+                    <p:menuitem value="Sporting Goods" action="#{items.keepChoice(12, 'Sporting Goods')}"/>
+                    <p:menuitem value="Sports Mem, Cards &amp; Fan Shop" action="#{items.keepChoice(12, 'Sports Mem, Cards &amp; Fan Shop')}"/>
+                    <p:menuitem value="Stamps" action="#{items.keepChoice(12, 'Stamps')}"/>
+                    <p:menuitem value="Tickets &amp; Experiences" action="#{items.keepChoice(12, 'Tickets &amp; Experiences')}"/>
+                    <p:menuitem value="Toys &amp; Hobbies" action="#{items.keepChoice(12, 'Toys &amp; Hobbies')}"/>
+                    <p:menuitem value="Travel" action="#{items.keepChoice(12, 'Travel')}"/>
+                    <p:menuitem value="Video Games &amp; Consoles" action="#{items.keepChoice(12, 'Video Games &amp; Consoles')}"/>
+                </p:submenu>
+                <p:submenu label="By Rating">
+                    <p:menuitem value="Very Bad (0 stars)" action="#{items.keepChoice(13, '0')}"/>
+                    <p:menuitem value="Bad (1 Star)" action="#{items.keepChoice(13, '1')}"/>
+                    <p:menuitem value="Not Good (2 Stars)" action="#{items.keepChoice(13, '2')}"/>
+                    <p:menuitem value="Good (3 Stars)" action="#{items.keepChoice(13, '3')}"/>
+                    <p:menuitem value="Very Good (4 Stars)" action="#{items.keepChoice(13, '4')}"/>
+                    <p:menuitem value="Excellent (5 Stars)" action="#{items.keepChoice(13, '5')}"/>
+                </p:submenu>
+                <p:submenu label="By Expiration Date">
+                    <p:menuitem value="Today" action="#{items.keepChoice(14, '1')}"/>
+                    <p:menuitem value="This Week" action="#{items.keepChoice(14, '7')}"/>
+                    <p:menuitem value="This Month" action="#{items.keepChoice(14, '30')}"/>
+                    <p:menuitem value="Other" action="#{items.keepChoice(14, '6000')}"/>
+                </p:submenu>
+            </p:submenu>
+        </p:panelMenu>
+
+    </h:form>
+</ui:composition>
+
