@@ -9,6 +9,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.model.DataModel;
@@ -18,6 +20,8 @@ import javax.faces.model.ListDataModel;
 @SessionScoped
 public class ItemListBean {
 
+    private static final Logger LOG = Logger.getLogger(ItemBean.class.getName());
+    
     private ItemDB itemDB;
     private Integer choice;
     private String sub;
@@ -45,10 +49,13 @@ public class ItemListBean {
         if (itemList == null) {
             List list;
             if (choice == 21) {
+                //FIXME WTF is 21?
                 list = itemDB.getItems(username, choice, keys);
+                LOG.log(Level.INFO, "{0} elements in the list", list.size());
                 keys = "";
             } else {
                 list = itemDB.getItems(username, choice, sub);
+                LOG.log(Level.INFO, "{0} elements in the list", list.size());
             }
             if (list != null) {
                 ArrayList<ItemBean> iList = new ArrayList<ItemBean>();

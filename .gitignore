@@ -1,4 +1,5 @@
 *.jar
+*.ini
 lib/
 *.swp
 *.swo
