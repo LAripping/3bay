@@ -6,6 +6,9 @@ Browse. Bid. Buy!
    * Usual description here, who did what, why, when.
    * Add actual README notes
    * Add the Project description file (and link through the README)
+   * HTTPS requested in the description can be implemented in (Tomcat
+     deployments) by using the (linked-here) `server.xml` file instead
+     of Tomcat's original one.
    * The whole process to Install, Configure, Start (NetBeans,
      Glashfish, mysql,...)
 
