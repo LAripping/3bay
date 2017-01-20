@@ -1,14 +1,13 @@
-<img src="screenshots/pre-tag/favicon.png" align="right" height="250" />
+<img src="screenshots/pre-tag/favicon.png" align="right" height="200" />
 # 3bay
 > Browse, Bid. Buy!
 
 3bay is an awesome online auctioning web application showcasing many cool functionalities, developed as a semester team project by two Greek students. It provides an easy-to-use web interface along with a feature-rich backend that can be delpoyed rapidly!
 
-[![3bay auctions expired](screenshots/pre-tag/my_auctions_expired_pasted.png)]()
+[![3bay home](screenshots/pre-tag/my_auctions_expired_pasted.png)]()
 
 ## Table of Contents
 - [Installation](#installation)
-db nb server... first look (guest page)
 - [Admin Guide](#admin-guide)
 	- [User List](#user-list)
 	- [Exporting](#exporting)
@@ -16,7 +15,7 @@ db nb server... first look (guest page)
 	- [Login - Register](#login-register)
 	login register acceptance logout https
 	- [Profile](#profile)
-	map messages
+	map messages recommendations
 	- [Messages](#messages)
 	received write sent trash 
 	- [Auctions](#auctions)
@@ -64,7 +63,18 @@ Go to the `Project` panel > Select the `Services` tab > `Databases` > `Drivers` 
 Move the supplied [uploads](uploads/) directory to the server's web root (publicly accessible files). e.g. `<install_dir>/glashfish/domains/domain1/docroot` in GlashfFsh. This is necessary for the demo auctions' photos to appear.
 
 - **Step 8:** *Launch 3bay!*
-The final step is to `Run` the project from the IDE and tadaa! you are looking at a nice looking Log-in screen! Just visit [http://localhost:8080/3bay_4](http://localhost:8080/3bay_4) in case of the setup described in this guide.
+The final step is to `Run` the project from the IDE and tadaa! you are looking at a nice looking Log-in screen! Just visit [http://localhost:8080/3bay_4](http://localhost:8080/3bay) in case of the setup described in this guide.
+
+[![login](screenshots/pre-tag/login.png)]()
+
+Now you can take a look around in guest mode, or log-in as the app administrator using the credentials found in the DB script.
+
+
+## Admin Guide
+Use the hard-coded username:password pair `Admin`:`admin`, to get access to the app's Administrative console where you can perform the following tasks:
+
+  - *Approve User  Registrations* : Clicking the `Users` button in the sidebar the list of platform users is displayed where profile info for each one of them is available as well as an option to Accept/Reject pending registration forms submitted.
+  - *Export Auctions to XML*: Viewing the Auctions enables the Admin to export them in an XML file for easy migration. Importing functionality is currently pending (Issue #4).
 
 
 
