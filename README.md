@@ -1,24 +1,32 @@
+<img src="screenshots/pre-tag/favicon.png" align="right" height="100" />
 # 3bay
-Browse. Bid. Buy!
+> Browse, Bid. Buy!
 
-## TODOs
-- [ ] Write in this README:
-   * Usual description here, who did what, why, when.
-   * Add actual README notes
-   * Add the Project description file (and link through the README)
-   * HTTPS requested in the description can be implemented in (Tomcat
-     deployments) by using the (linked-here) `server.xml` file instead
-     of Tomcat's original one.
-   * The whole process to Install, Configure, Start (NetBeans,
-     Glashfish, mysql,...)
+3bay is an awesome online auctioning web application with many cool functionalities, developed as a semester team project by two Greek students. It provides an easy-to-use web interface along with a feature-rich backend that can be delpoyed rapidly!
 
-- [ ] Upload `uploads/` to glashfish server and describe the purpose.
-- [ ] Set up the HTTPS and polish AuthenticationFilter
-- [ ] Untangle files, where is each supposed to be? Libraries needed?
-- [ ] Ensure mydb.mysql sets up the whole db required when exec'ed
-- [ ] Fix OpenMap API error (`missing key`)
-- [ ] Add Login button to Guest Home (link to login screen)
-- [ ] Fix page layout
-   * Banner next to logo
-   * Cooler logo (not a label'ed panel)
+[![3bay auctions expired](screenshots/pre-tag/my_auctions_expired_pasted.png)]()
 
+## Table of Contents
+- [Installation](#installation)
+db nb server... first look (guest page)
+- [Admin Guide](#admin-guide)
+	- [User List](#user-list)
+- [User Guide](#user-guide)
+	- [Login - Register](#login-register)
+	login register acceptance logout https
+	- [Profile](#profile)
+	map messages
+	- [Messages](#messages)
+	received write sent trash 
+	- [Auctions](#auctions)
+	browse filter view  rate
+		- [Buy - Sell](#buy-sell)
+		bids status create edit
+	
+## Installation
+
+
+## Team Members
+[![Leonidas Tsaousis](member_photos/leon.jpg)](https://github.com/LAripping)| [![Alexandros Zeakis](member_photos/alex.jpg)]()
+---|---
+Leonidas Tsaousis | Alexandros Zeakis
