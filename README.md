@@ -1,4 +1,4 @@
-<img src="screenshots/pre-tag/favicon.png" align="right" height="100" />
+<img src="screenshots/pre-tag/favicon.png" align="right" height="150" />
 # 3bay
 > Browse, Bid. Buy!
 
@@ -11,6 +11,7 @@
 db nb server... first look (guest page)
 - [Admin Guide](#admin-guide)
 	- [User List](#user-list)
+	- [Exporting](#exporting)
 - [User Guide](#user-guide)
 	- [Login - Register](#login-register)
 	login register acceptance logout https
@@ -22,6 +23,9 @@ db nb server... first look (guest page)
 	browse filter view  rate
 		- [Buy - Sell](#buy-sell)
 		bids status create edit
+- [Backstory](#backstory)
+	- [Team Members](#team-members)
+	
 	
 ## Installation
 
