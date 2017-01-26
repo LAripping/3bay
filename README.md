@@ -9,21 +9,15 @@
 ## Table of Contents
 - [Installation](#installation)
 - [Admin Guide](#admin-guide)
-	- [User List](#user-list)
-	- [Exporting](#exporting)
+	- User List
+	- Exporting
 - [User Guide](#user-guide)
-	- [Login - Register](#login-register)
-	login register acceptance logout https
-	- [Profile](#profile)
-	map messages recommendations
-	- [Messages](#messages)
-	received write sent trash 
-	- [Auctions](#auctions)
-	browse filter view  rate
-		- [Buy - Sell](#buy-sell)
-		bids status create edit
-- [Backstory](#backstory)
-	- [Team Members](#team-members)
+	- Login - Register
+	- Profile
+	- Messages
+	- Auctions
+	- Buy - Sell
+- [Team Members](#team-members)
 
 	
 	
@@ -73,8 +67,49 @@ Now you can take a look around in guest mode, or log-in as the app administrator
 ## Admin Guide
 Use the hard-coded username:password pair `Admin`:`admin`, to get access to the app's Administrative console where you can perform the following tasks:
 
-  - *Approve User  Registrations* : Clicking the `Users` button in the sidebar the list of platform users is displayed where profile info for each one of them is available as well as an option to Accept/Reject pending registration forms submitted.
+  - *Approve User  Registrations* : Clicking the **Users** button in the sidebar the list of platform users is displayed where profile info for each one of them is available as well as an option to Accept/Reject pending registration forms submitted.
   - *Export Auctions to XML*: Viewing the Auctions enables the Admin to export them in an XML file for easy migration. Importing functionality is currently pending (Issue #4).
+
+[![user list](screenshots/pre-tag/users.png)]()
+
+
+## User Guide
+The application's users can login with their account credentials after creating one. Just fill the fields of the form that appears when clicking the **Register** button and wait for the admininstrator to review the request.
+
+Alternatively, they can browse the auctions and look around without any personal information or the ability to Bid/Buy/Sell by clicking the **Guest** button in the login page.
+
+The information mentioned above, consists of
+
+- the user provided details passed in the registration
+- a location visualisation
+- the approval status
+- the user's ratings both as a Seller and as Buyer
+
+...and can be viewed in the **Profile** page accesible via the sidemenu's link in th bottom.
+
+Also via the sidebar, the user can **Logout** from the app and return to the user home where a few **Suggestions** are featured for Auctions similar to the user's interests.
+
+Last major feature to be described before the introduction to Auctions, is the Messaging framework implemented to contact other users (Sellers/Bidders/...), and includes *Received*, *Sent* and *Create* options listed under the **Messages** tab.
+
+Received Messages | Received Messages (all)
+---|---
+[![received displayed only](screenshots/pre-tag/messages_received_display.png)]()| [![all received](screenshots/pre-tag/messages_received_all.png)]()
+Create message | Sent Messages
+[![create](screenshots/pre-tag/message_create.png)]()|[![sent](screenshots/pre-tag/messages_sent.png)]()
+
+Eventually, check out the gist of the application, the Auctions (sometimes noted as "Items" too), with the entry point of **All** listing, available in the Browse Auctions sidebar. 
+
+* Filter by categories, ratings or expiration date to match your taste...
+* Inspect [deeply](screenshots/pre-tag/item.png) the ones that "click" you...
+* Closely [monitor](screenshots/pre-tag/my_auctions_expired_pasted.png) the ones you engaged with from the **My Auctions** tab...
+* Don't think twice, go ahead and *Bid* for a chance to *Buy* it!
+* Give a one-touch [rating](screenshots/pre-tag/item_bid_ratings.png) for others to know...
+* Got to sell? [Create](screenshots/pre-tag/create_auction.png) your own item and list to get some easy cash!
+
+
+### *...And that's only the beginning!*
+
+A lot of features will be added, and for this we are waiting for your support, please fork us or file bugs and help make 3bay greater!
 
 
 
